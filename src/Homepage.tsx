@@ -7,7 +7,6 @@ import {
   Linkedin,
   Mail,
   Menu,
-  Moon,
   X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
