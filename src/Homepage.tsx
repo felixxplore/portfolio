@@ -8,7 +8,6 @@ import {
   Mail,
   Menu,
   Moon,
-  Sun,
   X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -26,20 +25,16 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { cn } from "@/lib/utils";
 import emailjs from "@emailjs/browser";
- 
 
 const Portfolio: React.FC = () => {
-  const [darkMode, setDarkMode] = useState(() => {
-    return window.matchMedia("(prefers-color-scheme: dark)").matches;
-  });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", darkMode);
-  }, [darkMode]);
+  const [loading, setLoading] = useState(true);
+  const [codeText, setCodeText] = useState("");
+  const fullCodeText =
+    "const developer = { name: 'Satyam Pawar', skills: ['React', 'TypeScript', 'Java', 'Spring Boot'] };";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,9 +56,20 @@ const Portfolio: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleDarkMode = () => {
-    setDarkMode((prevMode) => !prevMode);
-  };
+  // Simulate typing animation for loader
+  useEffect(() => {
+    let i = 0;
+    const typing = setInterval(() => {
+      if (i < fullCodeText.length) {
+        setCodeText(fullCodeText.slice(0, i + 1));
+        i++;
+      } else {
+        clearInterval(typing);
+        setTimeout(() => setLoading(false), 500); // Delay before hiding loader
+      }
+    }, 50);
+    return () => clearInterval(typing);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -107,7 +113,7 @@ const Portfolio: React.FC = () => {
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
-            theme: darkMode ? "dark" : "light",
+            theme: "dark",
           }
         );
         form.reset();
@@ -124,7 +130,7 @@ const Portfolio: React.FC = () => {
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
-          theme: darkMode ? "dark" : "light",
+          theme: "dark",
         }
       );
     } finally {
@@ -215,129 +221,123 @@ const Portfolio: React.FC = () => {
     {
       name: "React",
       icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/react.svg",
+      color: "#61DAFB",
     },
     {
       name: "TypeScript",
       icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/typescript.svg",
+      color: "#3178C6",
     },
     {
       name: "Java",
       icon: "https://cdn.jsdelivr.net/npm/@programming-languages-logos/java@0.0.0/java.png",
+      color: "#F89820",
     },
     {
       name: "Spring Boot",
       icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/spring.svg",
+      color: "#6DB33F",
     },
     {
       name: "MySQL",
       icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/mysql.svg",
+      color: "#4479A1",
     },
     {
       name: "Git",
       icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/git.svg",
+      color: "#F05032",
     },
     {
       name: "REST API",
       icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/postman.svg",
+      color: "#FF6C37",
     },
     {
       name: "HTML/CSS",
       icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/html5.svg",
+      color: "#E34F26",
     },
     {
       name: "Tailwind CSS",
       icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/tailwindcss.svg",
+      color: "#38B2AC",
     },
     {
       name: "Node.js",
       icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/nodedotjs.svg",
+      color: "#339933",
     },
   ];
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black flex items-center justify-center">
+        <div className="text-center">
+          <div className="relative">
+            <pre className="text-green-400 font-mono text-lg sm:text-xl">
+              {codeText}
+              <span className="animate-blink">|</span>
+            </pre>
+          </div>
+          <p className="mt-4 text-gray-400 animate-pulse">
+            Loading Portfolio...
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div
-      className={cn(
-        "min-h-screen transition-colors duration-300",
-        darkMode
-          ? "bg-gradient-to-b from-gray-900 to-black text-gray-100"
-          : "bg-gradient-to-b from-gray-100 to-gray-300 text-gray-900"
-      )}
-    >
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-gray-100">
       <style>
         {`
         @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes glow {
-          0% {
-            box-shadow: 0 0 5px rgba(147, 51, 234, 0.5);
-          }
-          50% {
-            box-shadow: 0 0 20px rgba(147, 51, 234, 0.8);
-          }
-          100% {
-            box-shadow: 0 0 5px rgba(147, 51, 234, 0.5);
-          }
+        @keyframes bounce {
+          0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+          40% { transform: translateY(-20px); }
+          60% { transform: translateY(-10px); }
         }
-        .animate-fadeInUp {
-          animation: fadeInUp 0.6s ease-out forwards;
+        @keyframes scaleIn {
+          from { opacity: 0; transform: scale(0.8); }
+          to { opacity: 1; transform: scale(1); }
         }
-        .hover\:glow:hover {
+        @keyframes blink {
+          50% { opacity: 0; }
+        }
+        .animate-fadeInUp { animation: fadeInUp 0.6s ease-out forwards; }
+        .animate-bounce { animation: bounce 1s ease; }
+        .animate-scaleIn { animation: scaleIn 0.5s ease-out forwards; }
+        .animate-blink { animation: blink 0.8s step-end infinite; }
+        .hover\\:glow:hover {
           animation: glow 1.5s infinite;
+          box-shadow: 0 0 20px rgba(147, 51, 234, 0.8);
         }
         .glassmorphism {
           background: rgba(255, 255, 255, 0.05);
           backdrop-filter: blur(10px);
           border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .skill-icon, .contact-icon {
-          fill: white !important;
-          color: white !important;
-        }
         @media (max-width: 640px) {
-          .container {
-            padding-left: 1rem;
-            padding-right: 1rem;
-          }
-          .home-section {
-            flex-direction: column;
-            text-align: center;
-          }
-          .profile-image {
-            width: 12rem !important;
-            height: 12rem !important;
-          }
-          .project-card {
-            height: auto !important;
-          }
-          .contact-grid {
-            grid-template-columns: 1fr !important;
-          }
+          .container { padding-left: 1rem; padding-right: 1rem; }
+          .home-section { flex-direction: column; text-align: center; }
+          .profile-image { width: 12rem !important; height: 12rem !important; }
+          .project-card { height: auto !important; }
+          .contact-grid { grid-template-columns: 1fr !important; }
         }
         `}
       </style>
 
-      <ToastContainer theme={darkMode ? "dark" : "light"} />
+      <ToastContainer theme="dark" />
 
       <header className="fixed top-0 left-0 right-0 z-50 glassmorphism">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center animate-fadeInUp">
-              <span
-                className={cn(
-                  "text-xl font-bold",
-                  darkMode
-                    ? "bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text"
-                    : "bg-gradient-to-r from-purple-600 to-pink-600 text-transparent bg-clip-text"
-                )}
-              >
+              <span className="text-xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text">
                 DevPortfolio
               </span>
             </div>
@@ -349,14 +349,10 @@ const Portfolio: React.FC = () => {
                     key={item}
                     onClick={() => scrollToSection(item)}
                     className={cn(
-                      "text-sm font-medium transition-all duration-300 hover:scale-105 ",
+                      "text-sm font-medium transition-all duration-300 hover:scale-105",
                       activeSection === item
-                        ? darkMode
-                          ? "text-purple-400"
-                          : "text-purple-600"
-                        : darkMode
-                        ? "text-gray-300"
-                        : "text-gray-600",
+                        ? "text-purple-400"
+                        : "text-gray-300",
                       "animate-fadeInUp hover:text-purple-400"
                     )}
                     style={{ animationDelay: `${index * 0.1}s` }}
@@ -369,26 +365,8 @@ const Portfolio: React.FC = () => {
 
             <div className="flex items-center space-x-4 animate-fadeInUp">
               <button
-                onClick={toggleDarkMode}
-                className={cn(
-                  "p-2 rounded-full transition-all duration-300 hover:scale-110 hover:glow",
-                  darkMode ? "hover:bg-gray-700" : "hover:bg-gray-200"
-                )}
-                aria-label="Toggle dark mode"
-              >
-                {darkMode ? (
-                  <Sun className="h-5 w-5 text-white" />
-                ) : (
-                  <Moon className="h-5 w-5 text-gray-900" />
-                )}
-              </button>
-
-              <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className={cn(
-                  "md:hidden p-2 rounded-full transition-all duration-300 hover:scale-110",
-                  darkMode ? "hover:bg-gray-700" : "hover:bg-gray-200"
-                )}
+                className="md:hidden p-2 rounded-full transition-all duration-300 hover:scale-110 hover:bg-gray-700"
                 aria-label="Toggle menu"
               >
                 {mobileMenuOpen ? (
@@ -413,12 +391,8 @@ const Portfolio: React.FC = () => {
                   className={cn(
                     "text-lg font-medium transition-all duration-300 hover:scale-105",
                     activeSection === item
-                      ? darkMode
-                        ? "text-purple-400"
-                        : "text-purple-600"
-                      : darkMode
-                      ? "text-gray-300"
-                      : "text-gray-600",
+                      ? "text-purple-400"
+                      : "text-gray-300",
                     "hover:text-purple-400"
                   )}
                   style={{ animationDelay: `${index * 0.1}s` }}
@@ -441,53 +415,31 @@ const Portfolio: React.FC = () => {
               <div className="flex-1 space-y-6 animate-fadeInUp">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                   Building the Future,{" "}
-                  <span
-                    className={cn(
-                      "bg-gradient-to-r text-transparent bg-clip-text",
-                      darkMode
-                        ? "from-purple-500 to-pink-500"
-                        : "from-purple-600 to-pink-600"
-                    )}
-                  >
+                  <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text">
                     One Project at a Time
                   </span>
                 </h1>
-                <p
-                  className={cn(
-                    "text-lg sm:text-xl max-w-2xl mx-auto lg:mx-0",
-                    darkMode ? "text-gray-400" : "text-gray-600"
-                  )}
-                >
+                <p className="text-lg sm:text-xl max-w-2xl mx-auto lg:mx-0 text-gray-400">
                   Full-stack developer passionate about creating impactful
                   solutions that solve real-world problems.
                 </p>
                 <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                   <Button
                     onClick={() => scrollToSection("projects")}
-                    className={cn(
-                      "hover:scale-105 transition-all duration-300 hover:glow",
-                      darkMode
-                        ? "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
-                        : "bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
-                    )}
+                    className="hover:scale-105 transition-all duration-300 hover:glow bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
                   >
                     View Projects
                   </Button>
                   <Button
                     onClick={() => scrollToSection("contact")}
                     variant="outline"
-                    className={cn(
-                      "hover:scale-105 transition-all duration-300",
-                      darkMode
-                        ? "border-purple-400 text-purple-400 hover:bg-purple-900/50"
-                        : "border-purple-600 text-purple-600 hover:bg-purple-200/50"
-                    )}
+                    className="hover:scale-105 transition-all duration-300 border-purple-400 text-purple-400 hover:bg-purple-900/50"
                   >
                     Contact Me
                   </Button>
                 </div>
               </div>
-              <div className="relative w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-purple-500 shadow-2xl hover:glow animate-fadeInUp profile-image">
+              <div className="relative w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-purple-500 shadow-2xl hover:glow animate-bounce profile-image">
                 <img
                   src="https://media.licdn.com/dms/image/v2/D4D03AQEHPguMQ_dOIg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1724633867734?e=1753315200&v=beta&t=BVSLZ466isLSdW4UCusmS8nYinP3D35rOdNLIAudpk8"
                   alt="Profile"
@@ -499,34 +451,16 @@ const Portfolio: React.FC = () => {
           </div>
         </section>
 
-        <section
-          id="about"
-          className={cn(
-            "py-12 sm:py-20",
-            darkMode ? "bg-gray-900/50" : "bg-gray-200/50"
-          )}
-        >
+        <section id="about" className="py-12 sm:py-20 bg-gray-900/50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 animate-fadeInUp">
-              <h2
-                className={cn(
-                  "text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r text-transparent bg-clip-text",
-                  darkMode
-                    ? "from-purple-400 to-pink-400"
-                    : "from-purple-600 to-pink-600"
-                )}
-              >
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">
                 About Me
               </h2>
               <div className="mt-2 h-1 w-20 bg-purple-500 mx-auto"></div>
             </div>
-            <div className="max-w-3xl mx-auto glassmorphism p-6 rounded-lg">
-              <p
-                className={cn(
-                  "text-base sm:text-lg mb-6 leading-relaxed",
-                  darkMode ? "text-gray-300" : "text-gray-700"
-                )}
-              >
+            <div className="max-w-3xl mx-auto glassmorphism p-6 rounded-lg animate-scaleIn">
+              <p className="text-base sm:text-lg mb-6 leading-relaxed text-gray-300">
                 I'm a passionate full-stack developer with a strong foundation
                 in both frontend and backend technologies. With expertise in
                 React, TypeScript, Java, and Spring Boot, I enjoy building
@@ -535,12 +469,7 @@ const Portfolio: React.FC = () => {
                 curiosity about how digital solutions can solve real-world
                 problems, and that drive continues to fuel my work today.
               </p>
-              <p
-                className={cn(
-                  "text-base sm:text-lg mb-8 leading-relaxed",
-                  darkMode ? "text-gray-300" : "text-gray-700"
-                )}
-              >
+              <p className="text-base sm:text-lg mb-8 leading-relaxed text-gray-300">
                 I thrive in collaborative environments where I can contribute my
                 technical skills while continuously learning from others. My
                 goal is to create software that not only meets technical
@@ -554,14 +483,7 @@ const Portfolio: React.FC = () => {
                   download="Satyam_Pawar_Resume.pdf"
                   className="inline-block"
                 >
-                  <Button
-                    className={cn(
-                      "flex items-center gap-2 hover:scale-105 transition-all duration-300 hover:glow",
-                      darkMode
-                        ? "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
-                        : "bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
-                    )}
-                  >
+                  <Button className="flex items-center gap-2 hover:scale-105 transition-all duration-300 hover:glow bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600">
                     <Download className="h-4 w-4 text-white" />
                     Download Resume
                   </Button>
@@ -574,23 +496,11 @@ const Portfolio: React.FC = () => {
         <section id="projects" className="py-12 sm:py-20 animate-fadeInUp">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2
-                className={cn(
-                  "text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r text-transparent bg-clip-text",
-                  darkMode
-                    ? "from-purple-400 to-pink-400"
-                    : "from-purple-600 to-pink-600"
-                )}
-              >
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">
                 My Projects
               </h2>
               <div className="mt-2 h-1 w-20 bg-purple-500 mx-auto"></div>
-              <p
-                className={cn(
-                  "mt-4 text-base sm:text-lg max-w-2xl mx-auto",
-                  darkMode ? "text-gray-400" : "text-gray-600"
-                )}
-              >
+              <p className="mt-4 text-base sm:text-lg max-w-2xl mx-auto text-gray-400">
                 Here are some of the projects I've worked on that showcase my
                 skills and expertise.
               </p>
@@ -600,8 +510,7 @@ const Portfolio: React.FC = () => {
                 <Card
                   key={index}
                   className={cn(
-                    "overflow-hidden transition-all duration-300 hover:shadow-2xl glassmorphism flex flex-col project-card",
-                    darkMode ? "bg-gray-800/30" : "bg-gray-100/30"
+                    "overflow-hidden transition-all duration-300 hover:shadow-2xl glassmorphism flex flex-col project-card bg-gray-800/30"
                   )}
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
@@ -609,34 +518,20 @@ const Portfolio: React.FC = () => {
                     <img
                       src={project.images[0] || "/placeholder.svg"}
                       alt={`${project.title} screenshot`}
-                      className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
+                      className="object-cover w-full h-full transition-transform duration-500 hover:scale-105 animate-scaleIn"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-purple-900/50 to-transparent" />
                   </div>
                   <CardHeader>
-                    <CardTitle
-                      className={cn(
-                        "text-lg sm:text-xl font-bold",
-                        darkMode ? "text-purple-300" : "text-purple-700"
-                      )}
-                    >
+                    <CardTitle className="text-lg sm:text-xl font-bold text-purple-300">
                       {project.title}
                     </CardTitle>
-                    <CardDescription
-                      className={cn(
-                        darkMode ? "text-gray-400" : "text-gray-600"
-                      )}
-                    >
+                    <CardDescription className="text-gray-400">
                       <div className="flex flex-wrap gap-2 mt-2">
                         {project.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
-                            className={cn(
-                              "px-2 py-1 text-xs rounded-full",
-                              darkMode
-                                ? "bg-purple-900/50 text-purple-300"
-                                : "bg-purple-200/50 text-purple-700"
-                            )}
+                            className="px-2 py-1 text-xs rounded-full bg-purple-900/50 text-purple-300"
                           >
                             {tech}
                           </span>
@@ -645,12 +540,7 @@ const Portfolio: React.FC = () => {
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="flex-grow">
-                    <ul
-                      className={cn(
-                        "text-sm list-disc pl-5 space-y-2",
-                        darkMode ? "text-gray-300" : "text-gray-700"
-                      )}
-                    >
+                    <ul className="text-sm list-disc pl-5 space-y-2 text-gray-300">
                       {project.description.map((point, idx) => (
                         <li key={idx}>{point}</li>
                       ))}
@@ -661,12 +551,7 @@ const Portfolio: React.FC = () => {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={cn(
-                        "flex items-center gap-1 text-sm font-medium hover:scale-105 transition-all duration-300",
-                        darkMode
-                          ? "text-purple-400 hover:text-purple-300"
-                          : "text-purple-600 hover:text-purple-700"
-                      )}
+                      className="flex items-center gap-1 text-sm font-medium hover:scale-105 transition-all duration-300 text-purple-400 hover:text-purple-300"
                     >
                       <Github className="h-4 w-4 text-white" />
                       GitHub
@@ -675,12 +560,7 @@ const Portfolio: React.FC = () => {
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={cn(
-                        "flex items-center gap-1 text-sm font-medium hover:scale-105 transition-all duration-300",
-                        darkMode
-                          ? "text-purple-400 hover:text-purple-300"
-                          : "text-purple-600 hover:text-purple-700"
-                      )}
+                      className="flex items-center gap-1 text-sm font-medium hover:scale-105 transition-all duration-300 text-purple-400 hover:text-purple-300"
                     >
                       <ExternalLink className="h-4 w-4 text-white" />
                       Live Demo
@@ -692,32 +572,14 @@ const Portfolio: React.FC = () => {
           </div>
         </section>
 
-        <section
-          id="skills"
-          className={cn(
-            "py-12 sm:py-20",
-            darkMode ? "bg-gray-900/50" : "bg-gray-200/50"
-          )}
-        >
+        <section id="skills" className="py-12 sm:py-20 bg-gray-900/50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 animate-fadeInUp">
-              <h2
-                className={cn(
-                  "text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r text-transparent bg-clip-text",
-                  darkMode
-                    ? "from-purple-400 to-pink-400"
-                    : "from-purple-600 to-pink-600"
-                )}
-              >
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">
                 Technical Skills
               </h2>
               <div className="mt-2 h-1 w-20 bg-purple-500 mx-auto"></div>
-              <p
-                className={cn(
-                  "mt-4 text-base sm:text-lg max-w-2xl mx-auto",
-                  darkMode ? "text-gray-400" : "text-gray-600"
-                )}
-              >
+              <p className="mt-4 text-base sm:text-lg max-w-2xl mx-auto text-gray-400">
                 Here are the technologies and tools I work with.
               </p>
             </div>
@@ -726,8 +588,7 @@ const Portfolio: React.FC = () => {
                 <div
                   key={index}
                   className={cn(
-                    "flex flex-col items-center p-4 rounded-lg glassmorphism shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:glow animate-fadeInUp",
-                    darkMode ? "bg-gray-800/30" : "bg-gray-100/30"
+                    "flex flex-col items-center p-4 rounded-lg glassmorphism shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:glow animate-bounce bg-gray-800/30"
                   )}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
@@ -735,27 +596,18 @@ const Portfolio: React.FC = () => {
                     <img
                       src={skill.icon || "/placeholder.svg"}
                       alt={skill.name}
-                      className="object-contain w-full h-full skill-icon"
+                      className="object-contain w-full h-full"
+                      style={{ filter: `drop-shadow(0 0 5px ${skill.color})` }}
                     />
                   </div>
-                  <span
-                    className={cn(
-                      "text-sm font-medium",
-                      darkMode ? "text-purple-300" : "text-purple-700"
-                    )}
-                  >
+                  <span className="text-sm font-medium text-purple-300">
                     {skill.name}
                   </span>
                 </div>
               ))}
             </div>
             <div className="mt-12 sm:mt-16 max-w-2xl mx-auto">
-              <h3
-                className={cn(
-                  "text-lg sm:text-xl font-bold text-center mb-6",
-                  darkMode ? "text-purple-300" : "text-purple-700"
-                )}
-              >
+              <h3 className="text-lg sm:text-xl font-bold text-center mb-6 text-purple-300">
                 Soft Skills
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
@@ -772,10 +624,7 @@ const Portfolio: React.FC = () => {
                   <div
                     key={index}
                     className={cn(
-                      "text-center p-3 rounded-lg glassmorphism animate-fadeInUp",
-                      darkMode
-                        ? "text-purple-300 bg-gray-800/30"
-                        : "text-purple-700 bg-gray-100/30"
+                      "text-center p-3 rounded-lg glassmorphism animate-scaleIn text-purple-300 bg-gray-800/30"
                     )}
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
@@ -790,42 +639,22 @@ const Portfolio: React.FC = () => {
         <section id="contact" className="py-12 sm:py-20 animate-fadeInUp">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2
-                className={cn(
-                  "text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r text-transparent bg-clip-text",
-                  darkMode
-                    ? "from-purple-400 to-pink-400"
-                    : "from-purple-600 to-pink-600"
-                )}
-              >
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">
                 Get In Touch
               </h2>
               <div className="mt-2 h-1 w-20 bg-purple-500 mx-auto"></div>
-              <p
-                className={cn(
-                  "mt-4 text-base sm:text-lg max-w-2xl mx-auto",
-                  darkMode ? "text-gray-400" : "text-gray-600"
-                )}
-              >
+              <p className="mt-4 text-base sm:text-lg max-w-2xl mx-auto text-gray-400">
                 Have a project in mind or want to discuss opportunities? Feel
                 free to reach out!
               </p>
             </div>
             <div className="grid md:grid-cols-2 gap-8 sm:gap-12 max-w-4xl mx-auto contact-grid">
-              <div
-                className={cn(
-                  "glassmorphism p-6 rounded-lg",
-                  darkMode ? "bg-gray-800/30" : "bg-gray-100/30"
-                )}
-              >
+              <div className="glassmorphism p-6 rounded-lg bg-gray-800/30 animate-scaleIn">
                 <form onSubmit={handleContactSubmit} className="space-y-4">
                   <div>
                     <label
                       htmlFor="from_name"
-                      className={cn(
-                        "block text-sm font-medium mb-1",
-                        darkMode ? "text-gray-300" : "text-gray-700"
-                      )}
+                      className="block text-sm font-medium mb-1 text-gray-300"
                     >
                       Name
                     </label>
@@ -834,21 +663,13 @@ const Portfolio: React.FC = () => {
                       name="from_name"
                       placeholder="Your name"
                       required
-                      className={cn(
-                        "w-full",
-                        darkMode
-                          ? "bg-gray-800/50 border-gray-700 text-gray-100 placeholder-gray-500"
-                          : "bg-gray-200/50 border-gray-300 text-gray-900 placeholder-gray-400"
-                      )}
+                      className="w-full bg-gray-800/50 border-gray-700 text-gray-100 placeholder-gray-500"
                     />
                   </div>
                   <div>
                     <label
                       htmlFor="from_email"
-                      className={cn(
-                        "block text-sm font-medium mb-1",
-                        darkMode ? "text-gray-300" : "text-gray-700"
-                      )}
+                      className="block text-sm font-medium mb-1 text-gray-300"
                     >
                       Email
                     </label>
@@ -858,21 +679,13 @@ const Portfolio: React.FC = () => {
                       type="email"
                       placeholder="Your email"
                       required
-                      className={cn(
-                        "w-full",
-                        darkMode
-                          ? "bg-gray-800/50 border-gray-700 text-gray-100 placeholder-gray-500"
-                          : "bg-gray-200/50 border-gray-300 text-gray-900 placeholder-gray-400"
-                      )}
+                      className="w-full bg-gray-800/50 border-gray-700 text-gray-100 placeholder-gray-500"
                     />
                   </div>
                   <div>
                     <label
                       htmlFor="message"
-                      className={cn(
-                        "block text-sm font-medium mb-1",
-                        darkMode ? "text-gray-300" : "text-gray-700"
-                      )}
+                      className="block text-sm font-medium mb-1 text-gray-300"
                     >
                       Message
                     </label>
@@ -881,23 +694,13 @@ const Portfolio: React.FC = () => {
                       name="message"
                       placeholder="Your message"
                       required
-                      className={cn(
-                        "w-full min-h-[150px]",
-                        darkMode
-                          ? "bg-gray-800/50 border-gray-700 text-gray-100 placeholder-gray-500"
-                          : "bg-gray-200/50 border-gray-300 text-gray-900 placeholder-gray-400"
-                      )}
+                      className="w-full min-h-[150px] bg-gray-800/50 border-gray-700 text-gray-100 placeholder-gray-500"
                     />
                   </div>
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className={cn(
-                      "w-full hover:scale-105 transition-all duration-300 hover:glow",
-                      darkMode
-                        ? "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
-                        : "bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
-                    )}
+                    className="w-full hover:scale-105 transition-all duration-300 hover:glow bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
                   >
                     {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
@@ -906,25 +709,15 @@ const Portfolio: React.FC = () => {
               <div className="flex flex-col justify-center space-y-6">
                 <div className="flex items-center gap-4 animate-fadeInUp">
                   <div className="p-3 rounded-full glassmorphism">
-                    <Mail className="h-6 w-6 text-purple-400 contact-icon" />
+                    <Mail className="h-6 w-6 text-purple-400" />
                   </div>
                   <div>
-                    <h3
-                      className={cn(
-                        "text-lg font-medium",
-                        darkMode ? "text-purple-300" : "text-purple-700"
-                      )}
-                    >
+                    <h3 className="text-lg font-medium text-purple-300">
                       Email
                     </h3>
                     <a
                       href="mailto:satyampawar0070@gmail.com"
-                      className={cn(
-                        "hover:scale-105 transition-all duration-300",
-                        darkMode
-                          ? "text-gray-400 hover:text-purple-400"
-                          : "text-gray-600 hover:text-purple-600"
-                      )}
+                      className="hover:scale-105 transition-all duration-300 text-gray-400 hover:text-purple-400"
                     >
                       satyampawar0070@gmail.com
                     </a>
@@ -932,27 +725,17 @@ const Portfolio: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-4 animate-fadeInUp">
                   <div className="p-3 rounded-full glassmorphism">
-                    <Github className="h-6 w-6 text-purple-400 contact-icon" />
+                    <Github className="h-6 w-6 text-purple-400" />
                   </div>
                   <div>
-                    <h3
-                      className={cn(
-                        "text-lg font-medium",
-                        darkMode ? "text-purple-300" : "text-purple-700"
-                      )}
-                    >
+                    <h3 className="text-lg font-medium text-purple-300">
                       GitHub
                     </h3>
                     <a
                       href="https://github.com/felixxplore"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={cn(
-                        "hover:scale-105 transition-all duration-300",
-                        darkMode
-                          ? "text-gray-400 hover:text-purple-400"
-                          : "text-gray-600 hover:text-purple-600"
-                      )}
+                      className="hover:scale-105 transition-all duration-300 text-gray-400 hover:text-purple-400"
                     >
                       github.com/felixxplore
                     </a>
@@ -960,27 +743,17 @@ const Portfolio: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-4 animate-fadeInUp">
                   <div className="p-3 rounded-full glassmorphism">
-                    <Linkedin className="h-6 w-6 text-purple-400 contact-icon" />
+                    <Linkedin className="h-6 w-6 text-purple-400" />
                   </div>
                   <div>
-                    <h3
-                      className={cn(
-                        "text-lg font-medium",
-                        darkMode ? "text-purple-300" : "text-purple-700"
-                      )}
-                    >
+                    <h3 className="text-lg font-medium text-purple-300">
                       LinkedIn
                     </h3>
                     <a
                       href="https://www.linkedin.com/in/satyam-pawar-93a800218"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={cn(
-                        "hover:scale-105 transition-all duration-300",
-                        darkMode
-                          ? "text-gray-400 hover:text-purple-400"
-                          : "text-gray-600 hover:text-purple-600"
-                      )}
+                      className="hover:scale-105 transition-all duration-300 text-gray-400 hover:text-purple-400"
                     >
                       linkedin.com/in/satyampawar
                     </a>
@@ -992,15 +765,10 @@ const Portfolio: React.FC = () => {
         </section>
       </main>
 
-      <footer
-        className={cn(
-          "py-8 border-t animate-fadeInUp",
-          darkMode ? "border-gray-800" : "border-gray-300"
-        )}
-      >
+      <footer className="py-8 border-t animate-fadeInUp border-gray-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className={cn(darkMode ? "text-gray-400" : "text-gray-600")}>
+            <p className="text-gray-400">
               © {new Date().getFullYear()} Satyam Pawar. All rights reserved.
             </p>
             <div className="flex space-x-4 mt-4 md:mt-0">
@@ -1008,12 +776,7 @@ const Portfolio: React.FC = () => {
                 href="https://github.com/felixxplore"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={cn(
-                  "hover:scale-105 transition-all duration-300",
-                  darkMode
-                    ? "text-gray-400 hover:text-purple-400"
-                    : "text-gray-600 hover:text-purple-600"
-                )}
+                className="hover:scale-105 transition-all duration-300 text-gray-400 hover:text-purple-400"
                 aria-label="GitHub"
               >
                 <Github className="h-5 w-5 text-white" />
@@ -1022,12 +785,7 @@ const Portfolio: React.FC = () => {
                 href="https://www.linkedin.com/in/satyam-pawar-93a800218"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={cn(
-                  "hover:scale-105 transition-all duration-300",
-                  darkMode
-                    ? "text-gray-400 hover:text-purple-400"
-                    : "text-gray-600 hover:text-purple-600"
-                )}
+                className="hover:scale-105 transition-all duration-300 text-gray-400 hover:text-purple-400"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5 text-white" />
@@ -1040,10 +798,7 @@ const Portfolio: React.FC = () => {
       <button
         onClick={scrollToTop}
         className={cn(
-          "fixed bottom-6 right-6 p-3 rounded-full text-white shadow-lg transition-all duration-300 hover:scale-110 hover:glow",
-          darkMode
-            ? "bg-gradient-to-r from-purple-500 to-pink-500"
-            : "bg-gradient-to-r from-purple-600 to-pink-600",
+          "fixed bottom-6 right-6 p-3 rounded-full text-white shadow-lg transition-all duration-300 hover:scale-110 hover:glow bg-gradient-to-r from-purple-500 to-pink-500",
           showScrollTop
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-10 pointer-events-none"
