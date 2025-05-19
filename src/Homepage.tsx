@@ -478,7 +478,7 @@ const Portfolio: React.FC = () => {
               </p>
               <div className="flex justify-center">
                 <a
-                  href="/Satyam_Pawar_Resume.pdf"
+                  href="/JavaDev_Satyam_Pawar_Resume.pdf"
                   download="Satyam_Pawar_Resume.pdf"
                   className="inline-block"
                 >
