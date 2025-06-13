@@ -157,9 +157,8 @@ const Portfolio: React.FC = () => {
         "Core Java",
         "OOPs",
       ],
-      images: [
-        "https://media.licdn.com/dms/image/sync/v2/D4D27AQF_auUfj2PdQQ/articleshare-shrink_800/B4DZbIiLCMGYAU-/0/1747121124495?e=1748181600&v=beta&t=zhQeomyq2oY8SowFE65FWkETzC3Ifgu01K7pTHFz2DI",
-      ],
+      images: ["src/assets/library2.png"],
+
       github: "https://github.com/felixxplore/LIbrary-Management-System",
       demo: "https://github.com/felixxplore/LIbrary-Management-System",
     },
@@ -181,9 +180,7 @@ const Portfolio: React.FC = () => {
         "JWT",
         "REST API",
       ],
-      images: [
-        "https://media.licdn.com/dms/image/v2/D4D2DAQEikX5byyaSFQ/profile-treasury-image-shrink_800_800/B4DZbjQ4FIIAAY-/0/1747569576233?e=1748185200&v=beta&t=Dgm5bbGYursoB7_WkdotcSkvl9YqzYOqx6gwx0Gmi8g",
-      ],
+      images: ["src/assets/gymsarthi.png"],
       github: "https://github.com/felixxplore/Quiz-Application",
       demo: "https://quiz-application-arkc.vercel.app/",
     },
@@ -208,9 +205,7 @@ const Portfolio: React.FC = () => {
         "REST API",
         "Express.js",
       ],
-      images: [
-        "https://media.licdn.com/dms/image/v2/D4D2DAQGLGi_nrKj4wg/profile-treasury-image-shrink_800_800/B4DZbIh4ErHAAc-/0/1747121048474?e=1748185200&v=beta&t=0-IFrGClGDPIVTIFDW2WVKC3RHrJa74NJbV4gQ4Tgps",
-      ],
+      images: ["src/assets/quiz.png"],
       github: "https://github.com/felixxplore/GymSarthi",
       demo: "https://gym-sarthi-frontend.vercel.app/",
     },
