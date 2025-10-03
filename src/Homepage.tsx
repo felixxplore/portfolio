@@ -21,10 +21,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { cn } from "@/lib/utils";
 import emailjs from "@emailjs/browser";
 
+
 const Portfolio: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);4
   const [isSubmitting, setIsSubmitting] = useState(false); 
  
   useEffect(() => {
@@ -451,7 +452,7 @@ const skills = {
                     Contact Me
                   </Button>
                   <a
-                    href="/public/Java_Dev_Satyam_Pawar.pdf"
+                    href="/Java_Dev_Satyam_Pawar.pdf"
                     download="Java_Dev_Satyam_Pawar.pdf"
                     className="inline-block"
                   >
@@ -464,7 +465,7 @@ const skills = {
               </div>
               <div className="relative w-100 h-100 sm:w-80 sm:h-80 lg:w-150 lg:h-150 rounded-full overflow-hidden border-2 border-white-700     ">
                 <img
-                  src="public/Web_Photo_Editor.jpg"
+                  src="/Web_Photo_Editor.jpg"
                   alt="Profile Placeholder"
                   className="object-cover w-full h-full"
                 />
