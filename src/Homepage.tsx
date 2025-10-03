@@ -4,23 +4,19 @@ import {
   Download,
   ExternalLink,
   Github,
-  Linkedin,
-  Mail,
+  Linkedin, 
   Menu,
   X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
-  Card,
-  CardContent,
+  Card, 
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { toast, ToastContainer } from "react-toastify";
+ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { cn } from "@/lib/utils";
 import emailjs from "@emailjs/browser";
@@ -327,23 +323,7 @@ const skills = {
   ],
 };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black flex items-center justify-center">
-        <div className="text-center">
-          <div className="relative">
-            <pre className="text-green-400 font-mono text-lg sm:text-xl">
-              {codeText}
-              <span className="animate-blink">|</span>
-            </pre>
-          </div>
-          <p className="mt-4 text-gray-400 animate-pulse">
-            Loading Portfolio...
-          </p>
-        </div>
-      </div>
-    );
-  }
+ 
 
   return (
     <div className="min-h-screen bg-gray-950 text-gray-100">
