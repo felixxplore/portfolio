@@ -545,47 +545,48 @@ const skills = {
           </div>
         </section>
 
-        <section id="skills" className="py-12 sm:py-20 bg-black ">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12 animate-fadeInUp">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-300 to-gray-500 text-transparent bg-clip-text">
-                Technical Skills
-              </h2>
-              <div className="mt-2 h-1 w-20 bg-gray-300 mx-auto"></div>                                                                                                       
-            </div>
-            <div className="grid grid-cols-10 gap-6 sm:gap-8 max-w-10xl mx-auto">
-              {Object.entries(skills).map(([category, skillList], index) =>
-                skillList.map((skill, skillIndex) => (
-                  <div
-                    key={`${category}-${skillIndex}`}
-                    className={cn(
-                      "flex flex-col items-center p-4 rounded-lg   shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:glow  border-gray-900 border-1 bg-black                      "
-                    )}
+         <section id="skills" className="py-8 sm:py-12 md:py-20 bg-black">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8 animate-fadeInUp">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-300 to-gray-500 text-transparent bg-clip-text">
+            Technical Skills
+          </h2>
+          <div className="mt-2 h-1 w-16 sm:w-20 bg-gray-300 mx-auto"></div>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-10 gap-4 sm:gap-6 md:gap-8 max-w-7xl mx-auto">
+          {Object.entries(skills).map(([category, skillList], index) =>
+            skillList.map((skill, skillIndex) => (
+              <div
+                key={`${category}-${skillIndex}`}
+                className={cn(
+                  "flex flex-col items-center p-3 sm:p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:glow border-gray-900 border bg-black"
+                )}
+                style={{
+                  animationDelay: `${(index * skillList.length + skillIndex) * 0.1}s`,
+                }}
+              >
+                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 mb-2 sm:mb-3 relative">
+                  <img
+                    src={skill.icon || "/placeholder.svg"}
+                    alt={skill.name}
+                    className="object-contain w-full h-full"
                     style={{
-                      animationDelay: `${
-                        (index * skillList.length + skillIndex) * 0.1
-                      }s`,
+                      filter: `drop-shadow(0 0 5px ${skill.color})`,
                     }}
-                  >                                                                                                     
-                    <div className="w-15 h-15 sm:w-12 sm:h-15 mb-3 relative">
-                      <img
-                        src={skill.icon || "/placeholder.svg"}
-                        alt={skill.name}
-                        className="object-contain w-full h-full"
-                        style={{
-                          filter: `drop-shadow(0 0 5px ${skill.color})`,
-                        }}
-                      />
-                    </div>
-                    <span className="text-sm font-medium text-gray-300">
-                      {skill.name}
-                    </span>
-                  </div>
-                ))
-              )}
-            </div>
-          </div>
-        </section>
+                  />
+                </div>
+                <span className="text-xs sm:text-sm font-medium text-gray-300 text-center">
+                  {skill.name}
+                </span>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+    </section>
+
+
+
 <section id="contact" className="py-12 sm:py-20 animate-fadeInUp bg-white">
   <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center mb-12">
