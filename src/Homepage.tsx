@@ -139,30 +139,6 @@ const Portfolio: React.FC = () => {
 
   const projects = [
     {
-      title: "Library Management System",
-      description: [
-        "Built a console-based Library Management System using core Java.",
-        "Key features include user authentication.",
-        "Supports book borrowing and returning.",
-        "Includes a reservation queue for books.",
-        "Implements overdue fine calculation at $0.50/day after 7 days.",
-        "Utilized ConcurrentHashMap for thread-safe data storage.",
-        "Used ExecutorService for multithreading to handle concurrent operations.",
-        "Implemented serialization for data persistence to save and load library data.",
-      ],
-      technologies: [
-        "Multithreading",
-        "File Handling",
-        "Collection",
-        "Core Java",
-        "OOPs",
-      ],
-      images: ["/library2.png"],
-
-      github: "https://github.com/felixxplore/LIbrary-Management-System",
-      demo: "https://github.com/felixxplore/LIbrary-Management-System",
-    },
-    {
       title: "Quizify - Quiz Web Application",
       description: [
         "Developed Quizify, a full-stack quiz application to enhance learning through interactive quizzes.",
@@ -175,6 +151,7 @@ const Portfolio: React.FC = () => {
         "React",
         "TypeScript",
         "Spring Boot",
+        "Spring Security",
         "Java",
         "MySQL",
         "JWT",
@@ -210,59 +187,145 @@ const Portfolio: React.FC = () => {
       demo: "https://gym-sarthi-frontend.vercel.app/",
     },
   ];
-
-  const skills = [
-    {
-      name: "React",
-      icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/react.svg",
-      color: "#61DAFB",
-    },
-    {
-      name: "TypeScript",
-      icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/typescript.svg",
-      color: "#3178C6",
-    },
+const skills = {
+  Languages: [
     {
       name: "Java",
-      icon: "https://cdn.jsdelivr.net/npm/@programming-languages-logos/java@0.0.0/java.png",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/java/java-original.svg",
       color: "#F89820",
     },
     {
-      name: "Spring Boot",
-      icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/spring.svg",
-      color: "#6DB33F",
+      name: "JavaScript",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/javascript/javascript-original.svg",
+      color: "#F7DF1E",
     },
     {
-      name: "MySQL",
-      icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/mysql.svg",
-      color: "#4479A1",
+      name: "TypeScript",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/typescript/typescript-original.svg",
+      color: "#3178C6",
+    },
+  ],
+  DeveloperTools: [
+    {
+      name: "VS Code",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/vscode/vscode-original.svg",
+      color: "#007ACC",
     },
     {
-      name: "Git",
-      icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/git.svg",
-      color: "#F05032",
+      name: "IntelliJ IDEA",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/intellij/intellij-original.svg",
+      color: "#000000",
     },
     {
-      name: "REST API",
-      icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/postman.svg",
+      name: "Postman",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/postman/postman-original.svg",
       color: "#FF6C37",
     },
+  ],
+  FrontendFrameworks: [
     {
-      name: "HTML/CSS",
-      icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/html5.svg",
-      color: "#E34F26",
+      name: "React",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/react/react-original.svg",
+      color: "#61DAFB",
+    },
+    {
+      name: "Redux Toolkit",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/redux/redux-original.svg",
+      color: "#764ABC",
     },
     {
       name: "Tailwind CSS",
-      icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/tailwindcss.svg",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/tailwindcss/tailwindcss-original.svg",
       color: "#38B2AC",
     },
+  ],
+  BackendFrameworks: [
     {
       name: "Node.js",
-      icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/nodedotjs.svg",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/nodejs/nodejs-original.svg",
       color: "#339933",
     },
-  ];
+    {
+      name: "Express.js",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/express/express-original.svg",
+      color: "#000000",
+    },
+    {
+      name: "Spring Boot",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/spring/spring-original.svg",
+      color: "#6DB33F",
+    },
+    {
+      name: "Spring Framework",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/spring/spring-original.svg",
+      color: "#6DB33F",
+    },
+    {
+      name: "Spring Security",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/spring/spring-original.svg",
+      color: "#6DB33F",
+    },
+    {
+      name: "Spring Data JPA",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/spring/spring-original.svg",
+      color: "#6DB33F",
+    },
+  ],
+  DevOps: [
+    {
+      name: "Docker",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/docker/docker-original.svg",
+      color: "#2496ED",
+    },
+    {
+      name: "Kubernetes",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/kubernetes/kubernetes-plain.svg",
+      color: "#326CE5",
+    },
+    {
+      name: "Kafka",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/apachekafka/apachekafka-original.svg",
+      color: "#231F20",
+    },
+    {
+      name: "gRPC",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/grpc/grpc-plain.svg",
+      color: "#00C4B4",
+    },
+    {
+      name: "Git/GitHub",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/git/git-original.svg",
+      color: "#F05032",
+    },
+    {
+      name: "Swagger",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/swagger/swagger-original.svg",
+      color: "#85EA2D",
+    },
+    {
+      name: "JUnit",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/junit/junit-original.svg",
+      color: "#25A162",
+    },
+  ],
+  Databases: [
+    {
+      name: "MySQL",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/mysql/mysql-original.svg",
+      color: "#4479A1",
+    },
+    {
+      name: "MongoDB",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/mongodb/mongodb-original.svg",
+      color: "#47A248",
+    },
+    {
+      name: "Redis",
+      icon: "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/redis/redis-original.svg",
+      color: "#DC382D",
+    },
+  ],
+};
 
   if (loading) {
     return (
@@ -283,90 +346,91 @@ const Portfolio: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-gray-100">
+    <div className="min-h-screen bg-gray-950 text-gray-100">
       <style>
         {`
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes bounce {
-          0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-          40% { transform: translateY(-20px); }
-          60% { transform: translateY(-10px); }
-        }
-        @keyframes scaleIn {
-          from { opacity: 0; transform: scale(0.8); }
-          to { opacity: 1; transform: scale(1); }
-        }
-        @keyframes blink {
-          50% { opacity: 0; }
-        }
-        .animate-fadeInUp { animation: fadeInUp 0.6s ease-out forwards; }
-        .animate-bounce { animation: bounce 1s ease; }
-        .animate-scaleIn { animation: scaleIn 0.5s ease-out forwards; }
-        .animate-blink { animation: blink 0.8s step-end infinite; }
-        .hover\\:glow:hover {
-          animation: glow 1.5s infinite;
-          box-shadow: 0 0 20px rgba(147, 51, 234, 0.8);
-        }
-        .glassmorphism {
-          background: rgba(255, 255, 255, 0.05);
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        @media (max-width: 640px) {
-          .container { padding-left: 1rem; padding-right: 1rem; }
-          .home-section { flex-direction: column; text-align: center; }
-          .profile-image { width: 12rem !important; height: 12rem !important; }
-          .project-card { height: auto !important; }
-          .contact-grid { grid-template-columns: 1fr !important; }
-        }
-        `}
+              @keyframes fadeInUp {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+              }
+              @keyframes bounce {
+                0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+                40% { transform: translateY(-20px); }
+                60% { transform: translateY(-10px); }
+              }
+              @keyframes scaleIn {
+                from { opacity: 0; transform: scale(0.8); }
+                to { opacity: 1; transform: scale(1); }
+              }
+              @keyframes blink {
+                50% { opacity: 0; }
+              }
+              @keyframes glow {
+                0% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.2); }
+                50% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+                100% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.2); }
+              }
+              .animate-fadeInUp { animation: fadeInUp 0.6s ease-out forwards; }
+              .animate-bounce { animation: bounce 1s ease; }
+              .animate-scaleIn { animation: scaleIn 0.5s ease-out forwards; }
+              .animate-blink { animation: blink 0.8s step-end infinite; }
+              .hover\\:glow:hover {
+                animation: glow 1.5s infinite;
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+              }
+              .glassmorphism {
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(12px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+              }
+              @media (max-width: 640px) {
+                .container { padding-left: 1rem; padding-right: 1rem; }
+                .home-section { flex-direction: column; text-align: center; }
+                .profile-image { width: 12rem !important; height: 12rem !important; }
+                .project-card { height: auto !important; }
+                .contact-grid { grid-template-columns: 1fr !important; }
+              }
+            `}
       </style>
 
       <ToastContainer theme="dark" />
 
-      <header className="fixed top-0 left-0 right-0 z-50 glassmorphism">
+      <header className="bg-black fixed top-0 left-0 right-0 z-50 glassmorphism">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center animate-fadeInUp">
-              <span className="text-xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text">
-                DevPortfolio
+              <span className="text-3xl font-bold bg-gradient-to-r from-gray-300 to-gray-500 text-transparent bg-clip-text">
+                Satyam Pawar
               </span>
             </div>
 
             <nav className="hidden md:flex space-x-4 lg:space-x-8">
-              {["home", "about", "projects", "skills", "contact"].map(
-                (item, index) => (
-                  <button
-                    key={item}
-                    onClick={() => scrollToSection(item)}
-                    className={cn(
-                      "text-sm font-medium transition-all duration-300 hover:scale-105",
-                      activeSection === item
-                        ? "text-purple-400"
-                        : "text-gray-300",
-                      "animate-fadeInUp hover:text-purple-400"
-                    )}
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    {item.charAt(0).toUpperCase() + item.slice(1)}
-                  </button>
-                )
-              )}
+              {["home", "projects", "skills", "contact"].map((item, index) => (
+                <button
+                  key={item}
+                  onClick={() => scrollToSection(item)}
+                  className={cn(
+                    "text-xl font-medium transition-all duration-300 hover:scale-105",
+                    activeSection === item ? "text-gray-300" : "text-gray-500",
+                    "animate-fadeInUp hover:text-gray-300"
+                  )}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  {item.charAt(0).toUpperCase() + item.slice(1)}
+                </button>
+              ))}
             </nav>
 
             <div className="flex items-center space-x-4 animate-fadeInUp">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden p-2 rounded-full transition-all duration-300 hover:scale-110 hover:bg-gray-700"
+                className="md:hidden p-2 rounded-full transition-all duration-300 hover:scale-110 hover:bg-gray-800"
                 aria-label="Toggle menu"
               >
                 {mobileMenuOpen ? (
-                  <X className="h-5 w-5 text-white" />
+                  <X className="h-5 w-5 text-gray-300" />
                 ) : (
-                  <Menu className="h-5 w-5 text-white" />
+                  <Menu className="h-5 w-5 text-gray-300" />
                 )}
               </button>
             </div>
@@ -377,24 +441,20 @@ const Portfolio: React.FC = () => {
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-40 glassmorphism pt-16 px-4 md:hidden animate-fadeInUp">
           <nav className="flex flex-col space-y-6 py-8">
-            {["home", "about", "projects", "skills", "contact"].map(
-              (item, index) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item)}
-                  className={cn(
-                    "text-lg font-medium transition-all duration-300 hover:scale-105",
-                    activeSection === item
-                      ? "text-purple-400"
-                      : "text-gray-300",
-                    "hover:text-purple-400"
-                  )}
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  {item.charAt(0).toUpperCase() + item.slice(1)}
-                </button>
-              )
-            )}
+            {["home", "projects", "skills", "contact"].map((item, index) => (
+              <button
+                key={item}
+                onClick={() => scrollToSection(item)}
+                className={cn(
+                  "text-lg font-medium transition-all duration-300 hover:scale-105",
+                  activeSection === item ? "text-gray-300" : "text-gray-500",
+                  "hover:text-gray-300"
+                )}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </button>
+            ))}
           </nav>
         </div>
       )}
@@ -402,122 +462,84 @@ const Portfolio: React.FC = () => {
       <main className="pt-16">
         <section
           id="home"
-          className="min-h-[calc(100vh-4rem)] flex items-center py-12 sm:py-20 bg-gradient-to-r from-purple-900/20 to-pink-900/20 home-section"
+          className="min-h-[calc(100vh-4rem)] flex items-center py-12 sm:py-20 bg-gradient-to-b from-gray-950 to-black home-section"
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-12">
-              <div className="flex-1 space-y-6 animate-fadeInUp">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                  Building the Future,{" "}
-                  <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text">
-                    One Project at a Time
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-4 sm:gap-6">
+              <div className="flex-1 space-y-4 animate-fadeInUp">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                  Hey, I'm Satyam, <br />
+                  <span className="bg-gradient-to-r from-gray-300 to-gray-500 text-transparent bg-clip-text">
+                    A Software Developer
                   </span>
                 </h1>
-                <p className="text-lg sm:text-xl max-w-2xl mx-auto lg:mx-0 text-gray-400">
-                  Full-stack developer passionate about creating impactful
-                  solutions that solve real-world problems.
-                </p>
                 <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                   <Button
                     onClick={() => scrollToSection("projects")}
-                    className="hover:scale-105 transition-all duration-300 hover:glow bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
+                    className="hover:scale-105 transition-all duration-300 hover:glow text-black bg-gradient-to-r from-gray-300 to-gray-500 hover:from-gray-400 hover:to-gray-600"
                   >
                     View Projects
                   </Button>
                   <Button
                     onClick={() => scrollToSection("contact")}
                     variant="outline"
-                    className="hover:scale-105 transition-all duration-300 border-purple-400 text-purple-400 hover:bg-purple-900/50"
+                    className="hover:scale-105 transition-all duration-300  border-gray-300 text-black hover:bg-gray-800/50 hover:text-white"
                   >
                     Contact Me
                   </Button>
+                  <a
+                    href="/public/Java_Dev_Satyam_Pawar.pdf"
+                    download="Java_Dev_Satyam_Pawar.pdf"
+                    className="inline-block"
+                  >
+                    <Button className="flex items-center gap-2 hover:scale-105 transition-all text-black duration-300 hover:glow bg-gradient-to-r from-gray-300 to-gray-500 hover:from-gray-400 hover:to-gray-600">
+                      <Download className="h-4 w-4 text-black" />
+                      Download Resume
+                    </Button>
+                  </a>
                 </div>
               </div>
-              <div className="relative w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-purple-500 shadow-2xl hover:glow animate-bounce profile-image">
+              <div className="relative w-100 h-100 sm:w-80 sm:h-80 lg:w-150 lg:h-150 rounded-full overflow-hidden border-2 border-white-700     ">
                 <img
-                  src="https://media.licdn.com/dms/image/v2/D4D03AQEHPguMQ_dOIg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1724633867734?e=1753315200&v=beta&t=BVSLZ466isLSdW4UCusmS8nYinP3D35rOdNLIAudpk8"
-                  alt="Profile"
+                  src="public/Web_Photo_Editor.jpg"
+                  alt="Profile Placeholder"
                   className="object-cover w-full h-full"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-purple-900/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t  " />
               </div>
             </div>
           </div>
         </section>
 
-        <section id="about" className="py-12 sm:py-20 bg-gray-900/50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12 animate-fadeInUp">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">
-                About Me
-              </h2>
-              <div className="mt-2 h-1 w-20 bg-purple-500 mx-auto"></div>
-            </div>
-            <div className="max-w-3xl mx-auto glassmorphism p-6 rounded-lg animate-scaleIn">
-              <p className="text-base sm:text-lg mb-6 leading-relaxed text-gray-300">
-                I'm a passionate full-stack developer with a strong foundation
-                in both frontend and backend technologies. With expertise in
-                React, TypeScript, Java, and Spring Boot, I enjoy building
-                robust, scalable applications that deliver exceptional user
-                experiences. My journey in software development began with a
-                curiosity about how digital solutions can solve real-world
-                problems, and that drive continues to fuel my work today.
-              </p>
-              <p className="text-base sm:text-lg mb-8 leading-relaxed text-gray-300">
-                I thrive in collaborative environments where I can contribute my
-                technical skills while continuously learning from others. My
-                goal is to create software that not only meets technical
-                requirements but also positively impacts users' lives. I'm
-                currently seeking opportunities to apply my skills in a dynamic
-                team focused on building innovative solutions.
-              </p>
-              <div className="flex justify-center">
-                <a
-                  href="/JavaDev_Satyam_Pawar_Resume.pdf"
-                  download="Satyam_Pawar_Resume.pdf"
-                  className="inline-block"
-                >
-                  <Button className="flex items-center gap-2 hover:scale-105 transition-all duration-300 hover:glow bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600">
-                    <Download className="h-4 w-4 text-white" />
-                    Download Resume
-                  </Button>
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="projects" className="py-12 sm:py-20 animate-fadeInUp">
+        <section
+          id="projects"
+          className="py-12 sm:py-20 animate-fadeInUp bg-white"
+        >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r text-black bg-clip-text">
                 My Projects
               </h2>
-              <div className="mt-2 h-1 w-20 bg-purple-500 mx-auto"></div>
-              <p className="mt-4 text-base sm:text-lg max-w-2xl mx-auto text-gray-400">
-                Here are some of the projects I've worked on that showcase my
-                skills and expertise.
-              </p>
+              <div className="mt-2 h-1 w-20  bg-black mx-auto"></div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
               {projects.map((project, index) => (
                 <Card
                   key={index}
                   className={cn(
-                    "overflow-hidden transition-all duration-300 hover:shadow-2xl glassmorphism flex flex-col project-card bg-gray-800/30"
+                    "overflow-hidden transition-all duration-300 hover:shadow-3xl hover:scale-108  flex flex-col project-card bg-black"
                   )}
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
-                  <div className="relative h-40 sm:h-48 overflow-hidden">
+                  <div className="relative h-40 sm:h-68 overflow-hidden">
                     <img
                       src={project.images[0] || "/placeholder.svg"}
                       alt={`${project.title} screenshot`}
-                      className="object-cover w-full h-full transition-transform duration-500 hover:scale-105 animate-scaleIn"
+                      className="object-cover w-full h-full transition-transform duration-500   animate-scaleIn"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-purple-900/50 to-transparent" />
                   </div>
                   <CardHeader>
-                    <CardTitle className="text-lg sm:text-xl font-bold text-purple-300">
+                    <CardTitle className="text-xl sm:text-2xl font-bold text-gray-300">
                       {project.title}
                     </CardTitle>
                     <CardDescription className="text-gray-400">
@@ -525,7 +547,7 @@ const Portfolio: React.FC = () => {
                         {project.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
-                            className="px-2 py-1 text-xs rounded-full bg-purple-900/50 text-purple-300"
+                            className="px-2 py-1 text-xs rounded-full bg-gray-800/50 text-gray-300"
                           >
                             {tech}
                           </span>
@@ -533,30 +555,23 @@ const Portfolio: React.FC = () => {
                       </div>
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className="flex-grow">
-                    <ul className="text-sm list-disc pl-5 space-y-2 text-gray-300">
-                      {project.description.map((point, idx) => (
-                        <li key={idx}>{point}</li>
-                      ))}
-                    </ul>
-                  </CardContent>
                   <CardFooter className="flex justify-between">
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-sm font-medium hover:scale-105 transition-all duration-300 text-purple-400 hover:text-purple-300"
+                      className="flex items-center gap-1 text-sm font-medium hover:scale-110 transition-all duration-300 text-gray-300 hover:text-gray-200"
                     >
-                      <Github className="h-4 w-4 text-white" />
+                      <Github className="h-4 w-4 text-gray-300" />
                       GitHub
                     </a>
                     <a
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-sm font-medium hover:scale-105 transition-all duration-300 text-purple-400 hover:text-purple-300"
+                      className="flex items-center gap-1 text-sm font-medium hover:scale-110 transition-all duration-300 text-gray-300 hover:text-gray-200"
                     >
-                      <ExternalLink className="h-4 w-4 text-white" />
+                      <ExternalLink className="h-4 w-4 text-gray-300" />
                       Live Demo
                     </a>
                   </CardFooter>
@@ -566,200 +581,173 @@ const Portfolio: React.FC = () => {
           </div>
         </section>
 
-        <section id="skills" className="py-12 sm:py-20 bg-gray-900/50">
+        <section id="skills" className="py-12 sm:py-20 bg-black ">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 animate-fadeInUp">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-300 to-gray-500 text-transparent bg-clip-text">
                 Technical Skills
               </h2>
-              <div className="mt-2 h-1 w-20 bg-purple-500 mx-auto"></div>
-              <p className="mt-4 text-base sm:text-lg max-w-2xl mx-auto text-gray-400">
-                Here are the technologies and tools I work with.
-              </p>
+              <div className="mt-2 h-1 w-20 bg-gray-300 mx-auto"></div>                                                                                                       
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 max-w-4xl mx-auto">
-              {skills.map((skill, index) => (
-                <div
-                  key={index}
-                  className={cn(
-                    "flex flex-col items-center p-4 rounded-lg glassmorphism shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:glow animate-bounce bg-gray-800/30"
-                  )}
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 mb-3 relative">
-                    <img
-                      src={skill.icon || "/placeholder.svg"}
-                      alt={skill.name}
-                      className="object-contain w-full h-full"
-                      style={{ filter: `drop-shadow(0 0 5px ${skill.color})` }}
-                    />
-                  </div>
-                  <span className="text-sm font-medium text-purple-300">
-                    {skill.name}
-                  </span>
-                </div>
-              ))}
-            </div>
-            <div className="mt-12 sm:mt-16 max-w-2xl mx-auto">
-              <h3 className="text-lg sm:text-xl font-bold text-center mb-6 text-purple-300">
-                Soft Skills
-              </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                {[
-                  "Problem Solving",
-                  "Time Management",
-                  "Communication",
-                  "Teamwork",
-                  "Adaptability",
-                  "Critical Thinking",
-                  "Attention to Detail",
-                  "Creativity",
-                ].map((skill, index) => (
+            <div className="grid grid-cols-10 gap-6 sm:gap-8 max-w-10xl mx-auto">
+              {Object.entries(skills).map(([category, skillList], index) =>
+                skillList.map((skill, skillIndex) => (
                   <div
-                    key={index}
+                    key={`${category}-${skillIndex}`}
                     className={cn(
-                      "text-center p-3 rounded-lg glassmorphism animate-scaleIn text-purple-300 bg-gray-800/30"
+                      "flex flex-col items-center p-4 rounded-lg   shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:glow  border-gray-900 border-1 bg-black                      "
                     )}
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    {skill}
+                    style={{
+                      animationDelay: `${
+                        (index * skillList.length + skillIndex) * 0.1
+                      }s`,
+                    }}
+                  >                                                                                                     
+                    <div className="w-15 h-15 sm:w-12 sm:h-15 mb-3 relative">
+                      <img
+                        src={skill.icon || "/placeholder.svg"}
+                        alt={skill.name}
+                        className="object-contain w-full h-full"
+                        style={{
+                          filter: `drop-shadow(0 0 5px ${skill.color})`,
+                        }}
+                      />
+                    </div>
+                    <span className="text-sm font-medium text-gray-300">
+                      {skill.name}
+                    </span>
                   </div>
-                ))}
-              </div>
+                ))
+              )}
             </div>
           </div>
         </section>
-
-        <section id="contact" className="py-12 sm:py-20 animate-fadeInUp">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">
-                Get In Touch
-              </h2>
-              <div className="mt-2 h-1 w-20 bg-purple-500 mx-auto"></div>
-              <p className="mt-4 text-base sm:text-lg max-w-2xl mx-auto text-gray-400">
-                Have a project in mind or want to discuss opportunities? Feel
-                free to reach out!
-              </p>
-            </div>
-            <div className="grid md:grid-cols-2 gap-8 sm:gap-12 max-w-4xl mx-auto contact-grid">
-              <div className="glassmorphism p-6 rounded-lg bg-gray-800/30 animate-scaleIn">
-                <form onSubmit={handleContactSubmit} className="space-y-4">
-                  <div>
-                    <label
-                      htmlFor="from_name"
-                      className="block text-sm font-medium mb-1 text-gray-300"
-                    >
-                      Name
-                    </label>
-                    <Input
-                      id="from_name"
-                      name="from_name"
-                      placeholder="Your name"
-                      required
-                      className="w-full bg-gray-800/50 border-gray-700 text-gray-100 placeholder-gray-500"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="from_email"
-                      className="block text-sm font-medium mb-1 text-gray-300"
-                    >
-                      Email
-                    </label>
-                    <Input
-                      id="from_email"
-                      name="from_email"
-                      type="email"
-                      placeholder="Your email"
-                      required
-                      className="w-full bg-gray-800/50 border-gray-700 text-gray-100 placeholder-gray-500"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium mb-1 text-gray-300"
-                    >
-                      Message
-                    </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      placeholder="Your message"
-                      required
-                      className="w-full min-h-[150px] bg-gray-800/50 border-gray-700 text-gray-100 placeholder-gray-500"
-                    />
-                  </div>
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full hover:scale-105 transition-all duration-300 hover:glow bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
-                  >
-                    {isSubmitting ? "Sending..." : "Send Message"}
-                  </Button>
-                </form>
-              </div>
-              <div className="flex flex-col justify-center space-y-6">
-                <div className="flex items-center gap-4 animate-fadeInUp">
-                  <div className="p-3 rounded-full glassmorphism">
-                    <Mail className="h-6 w-6 text-purple-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-medium text-purple-300">
-                      Email
-                    </h3>
-                    <a
-                      href="mailto:satyampawar0070@gmail.com"
-                      className="hover:scale-105 transition-all duration-300 text-gray-400 hover:text-purple-400"
-                    >
-                      satyampawar0070@gmail.com
-                    </a>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 animate-fadeInUp">
-                  <div className="p-3 rounded-full glassmorphism">
-                    <Github className="h-6 w-6 text-purple-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-medium text-purple-300">
-                      GitHub
-                    </h3>
-                    <a
-                      href="https://github.com/felixxplore"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:scale-105 transition-all duration-300 text-gray-400 hover:text-purple-400"
-                    >
-                      github.com/felixxplore
-                    </a>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 animate-fadeInUp">
-                  <div className="p-3 rounded-full glassmorphism">
-                    <Linkedin className="h-6 w-6 text-purple-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-medium text-purple-300">
-                      LinkedIn
-                    </h3>
-                    <a
-                      href="https://www.linkedin.com/in/satyam-pawar-93a800218"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:scale-105 transition-all duration-300 text-gray-400 hover:text-purple-400"
-                    >
-                      linkedin.com/in/satyampawar
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+<section id="contact" className="py-12 sm:py-20 animate-fadeInUp bg-white">
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold bg-gradient-to-r  text-black bg-clip-text  ">
+        Get In Touch
+      </h2>
+      <div className="mt-2 h-1 w-24 bg-black mx-auto"></div>
+    </div>
+    <div className="grid md:grid-cols-2 gap-8 sm:gap-12 max-w-5xl mx-auto">
+      <div className="p-6 rounded-xl bg-white/80 backdrop-blur-md shadow-lg border border-gray-300/50 animate-scaleIn">
+        <form onSubmit={handleContactSubmit} className="space-y-6">
+          <div>
+            <label
+              htmlFor="from_name"
+              className="block text-sm font-medium mb-2 text-black"
+            >
+              Name
+            </label>
+            <input
+              id="from_name"
+              name="from_name"
+              placeholder="Your name"
+              required
+              className="w-full px-4 py-3 bg-gray-50  rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent placeholder-gray-400 text-black transition-all duration-300 border-1 border-black"
+            />
           </div>
-        </section>
+          <div>
+            <label
+              htmlFor="from_email"
+              className="block text-sm font-medium mb-2 text-black"
+            >
+              Email
+            </label>
+            <input
+              id="from_email"
+              name="from_email"
+              type="email"
+              placeholder="Your email"
+              required
+              className="w-full px-4 py-3 bg-gray-50  border-1 border-black rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent placeholder-gray-400 text-black transition-all duration-300"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="message"
+              className="block text-sm font-medium mb-2 text-black"
+            >
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Your message"
+              required
+              className="w-full min-h-[150px] px-4 py-3 bg-gray-50 border border-black border-1 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-transparent placeholder-gray-400 text-black transition-all duration-300"
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full px-6 py-3 b  text-white font-semibold rounded-lg  bg-black   hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
+          >
+            {isSubmitting ? "Sending..." : "Send Message"}
+          </button>
+        </form>
+      </div>
+      <div className="flex flex-col justify-center space-y-6">
+        <div className="flex items-center gap-4 animate-fadeInUp">
+          <div className="p-3 rounded-full bg-white/80 backdrop-blur-md border border-yellow-200/50 shadow-sm">
+            <svg className="h-6 w-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 className="text-xl font-medium text-black">Email</h3>
+            <a
+              href="mailto:satyampawar0070@gmail.com"
+              className="text-black hover:text-yellow-700 hover:scale-105 transition-all duration-300"
+            >
+              satyampawar0070@gmail.com
+            </a>
+          </div>
+        </div>
+        <div className="flex items-center gap-4 animate-fadeInUp">
+          <div className="p-3 rounded-full bg-white/80 backdrop-blur-md border border-yellow-200/50 shadow-sm">
+            <svg className="h-6 w-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-1h4v1h-4zm0-3v-1h4v1h-4zm4-3h-4v-1h4v1z"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 className="text-xl font-medium text-black">GitHub</h3>
+            <a
+              href="https://github.com/felixxplore"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-black hover:text-yellow-700 hover:scale-105 transition-all duration-300"
+            >
+              github.com/felixxplore
+            </a>
+          </div>
+        </div>
+        <div className="flex items-center gap-4 animate-fadeInUp">
+          <div className="p-3 rounded-full bg-white/80 backdrop-blur-md border border-yellow-200/50 shadow-sm">
+            <svg className="h-6 w-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zm-4 7a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 className="text-xl font-medium text-black">LinkedIn</h3>
+            <a
+              href="https://www.linkedin.com/in/satyam-pawar-93a800218"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-black hover:text-yellow-700 hover:scale-105 transition-all duration-300"
+            >
+              linkedin.com/in/satyampawar
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
       </main>
 
-      <footer className="py-8 border-t animate-fadeInUp border-gray-800">
+      <footer className="py-8 border-t animate-fadeInUp border-gray-800 bg-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400">
@@ -770,19 +758,19 @@ const Portfolio: React.FC = () => {
                 href="https://github.com/felixxplore"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:scale-105 transition-all duration-300 text-gray-400 hover:text-purple-400"
+                className="hover:scale-105 transition-all duration-300 text-gray-400 hover:text-gray-300"
                 aria-label="GitHub"
               >
-                <Github className="h-5 w-5 text-white" />
+                <Github className="h-5 w-5 text-gray-300" />
               </a>
               <a
                 href="https://www.linkedin.com/in/satyam-pawar-93a800218"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:scale-105 transition-all duration-300 text-gray-400 hover:text-purple-400"
+                className="hover:scale-105 transition-all duration-300 text-gray-400 hover:text-gray-300"
                 aria-label="LinkedIn"
               >
-                <Linkedin className="h-5 w-5 text-white" />
+                <Linkedin className="h-5 w-5 text-gray-300" />
               </a>
             </div>
           </div>
@@ -792,14 +780,14 @@ const Portfolio: React.FC = () => {
       <button
         onClick={scrollToTop}
         className={cn(
-          "fixed bottom-6 right-6 p-3 rounded-full text-white shadow-lg transition-all duration-300 hover:scale-110 hover:glow bg-gradient-to-r from-purple-500 to-pink-500",
+          "fixed bottom-6 right-6 p-3 rounded-full text-white shadow-lg transition-all duration-300 hover:scale-110 hover:glow bg-gradient-to-r from-gray-300 to-gray-500",
           showScrollTop
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-10 pointer-events-none"
         )}
         aria-label="Scroll to top"
       >
-        <ArrowUp className="h-5 w-5 text-white" />
+        <ArrowUp className="h-5 w-5 text-black" />
       </button>
     </div>
   );
