@@ -25,12 +25,8 @@ const Portfolio: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [codeText, setCodeText] = useState("");
-  const fullCodeText =
-    "const developer = { name: 'Satyam Pawar', skills: ['React', 'TypeScript', 'Java', 'Spring Boot'] };";
-
+  const [isSubmitting, setIsSubmitting] = useState(false); 
+ 
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 500);
@@ -51,20 +47,7 @@ const Portfolio: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Simulate typing animation for loader
-  useEffect(() => {
-    let i = 0;
-    const typing = setInterval(() => {
-      if (i < fullCodeText.length) {
-        setCodeText(fullCodeText.slice(0, i + 1));
-        i++;
-      } else {
-        clearInterval(typing);
-        setTimeout(() => setLoading(false), 500); // Delay before hiding loader
-      }
-    }, 50);
-    return () => clearInterval(typing);
-  }, []);
+ 
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
